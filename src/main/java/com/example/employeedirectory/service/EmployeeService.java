@@ -26,4 +26,19 @@ public class EmployeeService {
         return employeeRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Employee Not Found"));
     }
+
+    public Employee updateEmployee(Long id, Employee employee) {
+        Employee employeeToUpdate = employeeRepository.findById(id)
+                .orElseThrow(() ->new RuntimeException("Employee Not Found") );
+
+        employeeToUpdate.setFirstName(employee.getFirstName());
+        employeeToUpdate.setLastName(employee.getLastName());
+        employeeToUpdate.setEmail(employee.getEmail());
+        employeeToUpdate.setDepartment(employee.getDepartment());
+        employeeToUpdate.setJoiningDate(employee.getJoiningDate());
+        employeeToUpdate.setDesignation(employee.getDesignation());
+        employeeToUpdate.setSalary(employee.getSalary());
+
+        return employeeRepository.save(employeeToUpdate);
+    }
 }

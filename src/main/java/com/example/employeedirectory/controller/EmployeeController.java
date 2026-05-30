@@ -29,4 +29,10 @@ public class EmployeeController {
     public Employee getEmployee(@PathVariable Long id){
         return employeeService.getEmployeeById(id);
     }
+
+    // API TO UPDATE PREVIOUS RECORDS.
+    @PutMapping("/{id}")
+    public Employee updateEmployee(@PathVariable Long id, @RequestBody Employee employee){
+        return employeeService.updateEmployee(id, employee);
+    }
 }
